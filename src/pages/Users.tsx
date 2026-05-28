@@ -44,7 +44,7 @@ const columns: ProColumnType<User>[] = [
     valueType: 'select',
     valueEnum: { Admin: 'Admin', Editor: 'Editor', Viewer: 'Viewer' },
     render: (v) => (
-      <Badge size="sm" color={v === 'Admin' ? 'primary' : v === 'Editor' ? 'info' : 'default'}>{v}</Badge>
+      <Badge size="sm" color={(v as string) === 'Admin' ? 'primary' : (v as string) === 'Editor' ? 'info' : 'default'}>{v as string}</Badge>
     ),
   },
   {
@@ -54,7 +54,7 @@ const columns: ProColumnType<User>[] = [
     valueType: 'select',
     valueEnum: { active: 'Active', inactive: 'Inactive', pending: 'Pending' },
     render: (v) => (
-      <Badge size="sm" color={v === 'active' ? 'success' : v === 'pending' ? 'warning' : 'danger'}>{v}</Badge>
+      <Badge size="sm" color={(v as string) === 'active' ? 'success' : (v as string) === 'pending' ? 'warning' : 'danger'}>{v as string}</Badge>
     ),
   },
   { title: 'Joined',  dataIndex: 'joined', key: 'joined', valueType: 'date', sortable: true },

@@ -56,7 +56,7 @@ const orderColumns: ProColumnType<Order>[] = [
     title: 'Amount',
     dataIndex: 'amount',
     key: 'amount',
-    render: (v) => <span className="font-semibold text-fg">${v}</span>,
+    render: (v) => <span className="font-semibold text-fg">${v as number}</span>,
     align: 'right',
   },
   {
@@ -64,8 +64,8 @@ const orderColumns: ProColumnType<Order>[] = [
     dataIndex: 'status',
     key: 'status',
     render: (v) => (
-      <Badge color={v === 'paid' ? 'success' : v === 'pending' ? 'warning' : 'danger'} size="sm">
-        {v}
+      <Badge color={(v as string) === 'paid' ? 'success' : (v as string) === 'pending' ? 'warning' : 'danger'} size="sm">
+        {v as string}
       </Badge>
     ),
   },

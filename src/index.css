@@ -1,1 +1,11 @@
+/* 1. pro-ui design tokens (CSS vars + @theme inline) — must be before @import "tailwindcss" */
+@import "@dangbt/pro-ui/theme.css";
+
+/* 2. Tailwind base/components/utilities */
 @import "tailwindcss";
+
+/* 3. Scan pro-ui component source so all their utility classes are generated */
+@source "../node_modules/@dangbt/pro-ui/src";
+
+/* 4. React Aria data-[state] variants (pressed, hovered, focused, etc.) */
+@plugin "tailwindcss-react-aria-components";

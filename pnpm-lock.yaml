@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dangbt/pro-ui':
-        specifier: ^1.3.20
-        version: 1.3.20(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)
+        specifier: ^1.3.21
+        version: 1.3.21(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.76.1(react@18.3.1))
@@ -57,6 +57,9 @@ importers:
       tailwindcss:
         specifier: ^4.0.0
         version: 4.3.0
+      tailwindcss-react-aria-components:
+        specifier: ^2.1.0
+        version: 2.1.0(tailwindcss@4.3.0)
       typescript:
         specifier: ^5.6.0
         version: 5.9.3
@@ -153,8 +156,8 @@ packages:
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
 
-  '@dangbt/pro-ui@1.3.20':
-    resolution: {integrity: sha512-s8LYPBD8aUyf7/SjvDNg8AvOlYxt2KUVxozfYlXLy6yF35+/PLFgQAKiETid06UwoApEC/KzQQfchwlhXg6o4Q==}
+  '@dangbt/pro-ui@1.3.21':
+    resolution: {integrity: sha512-5tHSYU0HrK4WB+j8s9cFRNUdjfT33xP5pXGfT/g4BL+bK9A+pxcoSXFV9XIiy6IckESFMDXHT+6Jdw84SqV7CQ==}
     peerDependencies:
       '@hookform/resolvers': '>=3'
       '@internationalized/date': '>=3'
@@ -1254,7 +1257,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@dangbt/pro-ui@1.3.20(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)':
+  '@dangbt/pro-ui@1.3.21(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)':
     dependencies:
       '@hookform/resolvers': 3.10.0(react-hook-form@7.76.1(react@18.3.1))
       '@internationalized/date': 3.12.1
