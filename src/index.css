@@ -9,3 +9,8 @@
 
 /* 4. React Aria data-[state] variants (pressed, hovered, focused, etc.) */
 @plugin "tailwindcss-react-aria-components";
+
+/* 5. Smooth anchor scrolling */
+html {
+  scroll-behavior: smooth;
+}

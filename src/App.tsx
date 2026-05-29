@@ -1,9 +1,10 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { useLayoutMode } from './hooks/useLayoutMode'
 import { ThemeIsland } from './components/ThemeIsland'
 import AppLayout from './components/AppLayout'
 import AppLayoutSider from './components/AppLayoutSider'
+import Landing from './pages/Landing'
 import Dashboard from './pages/Dashboard'
 import Analytics from './pages/Analytics'
 import Users from './pages/Users'
@@ -27,6 +28,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 function AppRoutes() {
   const { mode, toggle } = useLayoutMode()
   const { isAuthenticated } = useAuth()
+  const { pathname } = useLocation()
 
   const layoutElement = mode === 'sider'
     ? <AppLayoutSider onSwitchLayout={toggle} />
@@ -35,14 +37,16 @@ function AppRoutes() {
   return (
     <>
       <Routes>
-        {/* Public */}
+        {/* Landing — public, always accessible */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Public auth pages */}
         <Route path="/login"           element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register"        element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
 
         {/* Protected — layout is swappable */}
         <Route element={<ProtectedRoute>{layoutElement}</ProtectedRoute>}>
-          <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/analytics"  element={<Analytics />} />
           <Route path="/users"      element={<Users />} />
@@ -54,8 +58,8 @@ function AppRoutes() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* Theme island — fixed position, only when logged in */}
-      {isAuthenticated && <ThemeIsland />}
+      {/* Theme island — show on landing page too so visitors can try it */}
+      {(isAuthenticated || pathname === '/') && <ThemeIsland />}
     </>
   )
 }
