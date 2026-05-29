@@ -7,6 +7,9 @@ import {
 import { Avatar, Badge, useTheme } from '@dangbt/pro-ui'
 import { useAuth } from '../contexts/AuthContext'
 import logoIconUrl from '../assets/logo-icon.svg'
+import { CommandPalette } from './CommandPalette'
+import { NotificationsDrawer, SEED_NOTIFICATIONS } from './NotificationsDrawer'
+import type { Notification } from './NotificationsDrawer'
 
 /* ── ThemeToggle ── */
 function ThemeToggle() {
@@ -118,6 +121,14 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
   const { pathname } = useLocation()
   const w = collapsed ? 56 : 220
 
+  // Notifications state
+  const [notifOpen, setNotifOpen] = useState(false)
+  const [notifications, setNotifications] = useState<Notification[]>(SEED_NOTIFICATIONS)
+  const unreadCount = notifications.filter(n => !n.read).length
+  const handleMarkAllRead = () => setNotifications(prev => prev.map(n => ({ ...n, read: true })))
+  const handleClearAll    = () => setNotifications([])
+  const handleDismiss     = (id: string) => setNotifications(prev => prev.filter(n => n.id !== id))
+
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { path: '/analytics', label: 'Analytics',  icon: <BarChart2      className="w-4 h-4" /> },
@@ -128,6 +139,16 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
 
   return (
     /* Root: locks to viewport — nothing overflows the page */
+    <>
+    <CommandPalette />
+    <NotificationsDrawer
+      open={notifOpen}
+      notifications={notifications}
+      onClose={() => setNotifOpen(false)}
+      onMarkAllRead={handleMarkAllRead}
+      onClearAll={handleClearAll}
+      onDismiss={handleDismiss}
+    />
     <div className="flex h-screen overflow-hidden bg-canvas">
 
       {/* ── Sidebar ── */}
@@ -243,9 +264,35 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
             {PAGE_TITLES[pathname] ?? ''}
           </p>
           <div className="flex items-center gap-1">
-            <button type="button" className="relative p-1.5 rounded-lg text-fg-muted hover:bg-surface-subtle transition-colors">
+            {/* Back to pro-ui ecosystem */}
+            <a
+              href="https://pro-ui.pages.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:block px-2.5 py-1.5 text-xs font-semibold text-fg-muted hover:text-fg-2 hover:bg-surface-subtle rounded-lg transition-colors"
+            >
+              pro-ui ↗
+            </a>
+            <a
+              href="https://pro-ui-docs.pages.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:block px-2.5 py-1.5 text-xs font-semibold text-fg-muted hover:text-fg-2 hover:bg-surface-subtle rounded-lg transition-colors"
+            >
+              Docs ↗
+            </a>
+            <button
+              type="button"
+              className="relative p-1.5 rounded-lg text-fg-muted hover:bg-surface-subtle transition-colors"
+              onClick={() => setNotifOpen(v => !v)}
+              title="Notifications"
+            >
               <Bell className="w-4 h-4" />
-              <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-danger rounded-full" />
+              {unreadCount > 0 && (
+                <span className="absolute top-0.5 right-0.5 min-w-[14px] h-[14px] rounded-full bg-danger text-white text-[9px] font-bold flex items-center justify-center px-0.5 leading-none">
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
             </button>
             <ThemeToggle />
             <button
@@ -262,8 +309,30 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
         {/* Page content — only this scrolls */}
         <main className="flex-1 min-h-0 overflow-y-auto p-6 bg-canvas">
           <Outlet />
+          <footer className="mt-12 pt-5 border-t border-border-subtle">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                {[
+                  { label: 'pro-ui',     href: 'https://pro-ui.pages.dev' },
+                  { label: 'Docs',       href: 'https://pro-ui-docs.pages.dev' },
+                  { label: 'GitHub',     href: 'https://github.com/dangbt/pro-ui' },
+                  { label: 'npm',        href: 'https://www.npmjs.com/package/@dangbt/pro-ui' },
+                  { label: 'Sponsor ☕', href: 'https://github.com/sponsors/dangbt' },
+                ].map(l => (
+                  <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-fg-disabled hover:text-fg-muted transition-colors">
+                    {l.label}
+                  </a>
+                ))}
+              </div>
+              <p className="text-xs text-fg-disabled">
+                Built with <a href="https://pro-ui.pages.dev" target="_blank" rel="noopener noreferrer" className="hover:underline">pro-ui</a> · MIT
+              </p>
+            </div>
+          </footer>
         </main>
       </div>
     </div>
+    </>
   )
 }
