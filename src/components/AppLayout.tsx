@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { PageTransition } from './PageTransition'
 import {
   LayoutDashboard, BarChart2, Users, Settings, CreditCard as BillingIcon,
   Bell, LogOut, UserCircle, Moon, Sun, CreditCard, Shield, PanelLeft, Zap,
@@ -167,7 +168,7 @@ export default function AppLayout({ onSwitchLayout }: Props) {
         </Layout.TopNav>
 
         <Layout.Content padding scrollable className="bg-canvas">
-          <Outlet />
+          <PageTransition><Outlet /></PageTransition>
           <footer className="mt-12 pt-5 border-t border-border-subtle">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1">

@@ -1,4 +1,5 @@
 import { useMemo, useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis,
   CartesianGrid, Tooltip, ResponsiveContainer,
@@ -65,17 +66,19 @@ function KpiCard({ title, value, formatter, trend, icon, sparkData, color }: Kpi
   const isUp = trend.direction === 'up'
 
   return (
-    <div className="bg-surface border border-border rounded-xl p-4">
+    <div className="group relative bg-surface border border-border rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/5 hover:border-transparent overflow-hidden">
+      {/* Gradient accent top border */}
+      <div className="absolute inset-x-0 top-0 h-0.5 opacity-60 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }} />
       <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 text-fg-muted">
-          <span className="text-primary">{icon}</span>
+          <span className="p-1.5 rounded-lg transition-colors" style={{ color, backgroundColor: `${color}15` }}>{icon}</span>
           <span className="text-xs font-medium">{title}</span>
         </div>
         <Sparkline data={sparkData} color={color} />
       </div>
       <div className="flex items-end justify-between gap-2">
-        <span className="text-2xl font-bold text-fg tabular-nums leading-none">{display}</span>
-        <div className={`flex items-center gap-0.5 text-xs font-semibold ${isUp ? 'text-success' : 'text-danger'}`}>
+        <span className="text-3xl font-bold text-fg tabular-nums leading-none">{display}</span>
+        <div className={`flex items-center gap-0.5 text-xs font-semibold px-1.5 py-0.5 rounded-full ${isUp ? 'text-success bg-success/10' : 'text-danger bg-danger/10'}`}>
           {isUp ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
           {trend.value}
         </div>
@@ -214,11 +217,11 @@ const orderColumns: ProColumnType<Order>[] = [
 function RevenueTooltip({ active, payload, label }: { active?: boolean; payload?: { value: number; name: string }[]; label?: string }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-surface-raised border border-border rounded-lg shadow-lg px-3 py-2 text-xs">
-      <p className="text-fg-muted mb-1">{label}</p>
+    <div className="bg-surface/90 backdrop-blur-md border border-border/50 rounded-xl shadow-xl shadow-black/10 px-4 py-3 text-xs">
+      <p className="text-fg-muted mb-1.5 font-medium">{label}</p>
       {payload.map(p => (
-        <p key={p.name} className="text-fg font-semibold">
-          {p.name === 'revenue' ? `Revenue: $${p.value.toLocaleString()}` : `Target: $${p.value.toLocaleString()}`}
+        <p key={p.name} className="text-fg font-bold text-sm">
+          {p.name === 'revenue' ? `$${p.value.toLocaleString()}` : `Target: $${p.value.toLocaleString()}`}
         </p>
       ))}
     </div>
@@ -288,11 +291,11 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-fg">Dashboard</h1>
-          <p className="text-sm text-fg-muted mt-1">Welcome back! Here's what's happening.</p>
+          <h1 className="text-3xl font-extrabold text-fg tracking-tight">Dashboard</h1>
+          <p className="text-sm text-fg-muted mt-1.5">Welcome back! Here's what's happening.</p>
         </div>
         <div className="flex items-center gap-1.5 text-xs text-success font-medium px-2.5 py-1 rounded-full bg-success/10">
           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
@@ -301,7 +304,13 @@ export default function Dashboard() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <motion.div
+        className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+        initial="hidden"
+        animate="show"
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+      >
+        <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
         <KpiCard
           title="Monthly Revenue"
           value={totalRevenue}
@@ -311,6 +320,8 @@ export default function Dashboard() {
           sparkData={sparkRevenue}
           color={PRIMARY}
         />
+        </motion.div>
+        <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
         <KpiCard
           title="Total Users"
           value={12430}
@@ -319,6 +330,8 @@ export default function Dashboard() {
           sparkData={wave(12000, 600)}
           color={SUCCESS}
         />
+        </motion.div>
+        <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
         <KpiCard
           title="Active Sessions"
           value={842}
@@ -327,6 +340,8 @@ export default function Dashboard() {
           sparkData={wave(850, 120)}
           color={WARNING}
         />
+        </motion.div>
+        <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
         <KpiCard
           title="New Orders"
           value={156}
@@ -335,16 +350,17 @@ export default function Dashboard() {
           sparkData={wave(140, 30)}
           color={INFO}
         />
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Charts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Revenue area chart (live) */}
-        <div className="lg:col-span-2 bg-surface border border-border rounded-xl p-5">
-          <div className="flex items-center justify-between mb-4">
+        <div className="lg:col-span-2 bg-surface border border-border rounded-xl p-6">
+          <div className="flex items-center justify-between mb-5">
             <div>
-              <h2 className="font-semibold text-fg text-sm">Revenue</h2>
-              <p className="text-xs text-fg-muted">Live · vs $4,000/day target</p>
+              <h2 className="font-bold text-fg text-base">Revenue</h2>
+              <p className="text-xs text-fg-muted mt-0.5">Live · vs $4,000/day target</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5 text-xs text-fg-muted">

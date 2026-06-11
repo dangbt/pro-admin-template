@@ -14,3 +14,34 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* 6. Floating animation for landing page elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+/* 7. Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 8. Background dot pattern */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* 9. Dark mode glow effects */
+@media (prefers-color-scheme: dark) {
+  .glow-primary {
+    box-shadow: 0 0 20px -5px var(--color-primary);
+  }
+}
+:root[data-theme="dark"] .glow-primary,
+.dark .glow-primary {
+  box-shadow: 0 0 20px -5px var(--color-primary);
+}

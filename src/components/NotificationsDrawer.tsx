@@ -98,7 +98,7 @@ export function NotificationsDrawer({ open, notifications, onClose, onMarkAllRea
       {/* Overlay */}
       <div
         className={[
-          'fixed inset-0 z-[9997] bg-black/20 backdrop-blur-[1px] transition-opacity duration-300',
+          'fixed inset-0 z-[9997] bg-black/30 backdrop-blur-sm transition-opacity duration-300',
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
         onClick={onClose}
@@ -107,7 +107,7 @@ export function NotificationsDrawer({ open, notifications, onClose, onMarkAllRea
       {/* Drawer */}
       <div
         className={[
-          'fixed inset-y-0 right-0 z-[9997] w-80 bg-surface border-l border-border shadow-2xl',
+          'fixed inset-y-0 right-0 z-[9997] w-80 bg-surface/95 backdrop-blur-xl border-l border-border/50 shadow-2xl',
           'flex flex-col transition-transform duration-300 ease-out',
           open ? 'translate-x-0' : 'translate-x-full',
         ].join(' ')}

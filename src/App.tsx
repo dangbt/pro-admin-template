@@ -1,19 +1,25 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { useLayoutMode } from './hooks/useLayoutMode'
 import { ThemeIsland } from './components/ThemeIsland'
-import AppLayout from './components/AppLayout'
-import AppLayoutSider from './components/AppLayoutSider'
-import Landing from './pages/Landing'
-import Dashboard from './pages/Dashboard'
-import Analytics from './pages/Analytics'
-import Users from './pages/Users'
-import Settings from './pages/Settings'
-import Billing from './pages/Billing'
-import NotFound from './pages/NotFound'
-import Login from './pages/auth/Login'
-import Register from './pages/auth/Register'
-import ForgotPassword from './pages/auth/ForgotPassword'
+import { PageSkeleton } from './components/Skeleton'
+
+/* ── Lazy-loaded pages ── */
+const Landing = lazy(() => import('./pages/Landing'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const Analytics = lazy(() => import('./pages/Analytics'))
+const Users = lazy(() => import('./pages/Users'))
+const Settings = lazy(() => import('./pages/Settings'))
+const Billing = lazy(() => import('./pages/Billing'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const Login = lazy(() => import('./pages/auth/Login'))
+const Register = lazy(() => import('./pages/auth/Register'))
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'))
+
+/* ── Lazy-loaded layouts ── */
+const AppLayout = lazy(() => import('./components/AppLayout'))
+const AppLayoutSider = lazy(() => import('./components/AppLayoutSider'))
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth()
@@ -36,29 +42,22 @@ function AppRoutes() {
 
   return (
     <>
-      <Routes>
-        {/* Landing — public, always accessible */}
-        <Route path="/" element={<Landing />} />
-
-        {/* Public auth pages */}
-        <Route path="/login"           element={<PublicRoute><Login /></PublicRoute>} />
-        <Route path="/register"        element={<PublicRoute><Register /></PublicRoute>} />
-        <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-
-        {/* Protected — layout is swappable */}
-        <Route element={<ProtectedRoute>{layoutElement}</ProtectedRoute>}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/analytics"  element={<Analytics />} />
-          <Route path="/users"      element={<Users />} />
-          <Route path="/billing"    element={<Billing />} />
-          <Route path="/settings"   element={<Settings />} />
-        </Route>
-
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-
-      {/* Theme island — show on landing page too so visitors can try it */}
+      <Suspense fallback={<PageSkeleton />}>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+          <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+          <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
+          <Route element={<ProtectedRoute>{layoutElement}</ProtectedRoute>}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/billing" element={<Billing />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
       {(isAuthenticated || pathname === '/') && <ThemeIsland />}
     </>
   )

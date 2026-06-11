@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { z } from 'zod'
 import { LogOut, Zap, Check } from 'lucide-react'
+import confetti from 'canvas-confetti'
 import {
   ProForm, ProFormRow, ProFormInput, ProFormTextarea, ProFormSelect,
   Button, Alert, toast, Avatar,
@@ -99,6 +100,7 @@ export default function Settings() {
           onFinish={async (values) => {
             await new Promise(r => setTimeout(r, 600))
             toast.success(`Profile updated for ${values.name}`)
+            confetti({ particleCount: 80, spread: 60, origin: { y: 0.7 } })
           }}
           submitText="Save profile"
         >

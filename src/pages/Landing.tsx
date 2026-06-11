@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AreaChart, Area, ResponsiveContainer } from 'recharts'
+import { SpotlightCard } from '../components/GradientBorder'
 import {
   LayoutDashboard, Command, Palette, BarChart2, PanelLeft, Bell,
   DollarSign, Users, Activity, ShoppingCart, CheckCircle2, Zap,
@@ -180,8 +181,19 @@ function HeroSection({ isAuthenticated }: { isAuthenticated: boolean }) {
   const inView = useInView(mockupRef)
 
   return (
-    <section className="px-4 sm:px-6 pt-20 pb-16 flex flex-col items-center text-center bg-canvas">
-      <div className="max-w-3xl mx-auto w-full">
+    <section className="relative px-4 sm:px-6 pt-20 pb-16 flex flex-col items-center text-center bg-canvas overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--color-primary)22,transparent)]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-primary/5 blur-3xl animate-[pulse_8s_ease-in-out_infinite]" />
+      </div>
+
+      {/* Floating decorative elements */}
+      <div className="absolute top-20 left-[10%] w-20 h-20 rounded-full bg-primary/10 blur-2xl animate-[float_6s_ease-in-out_infinite]" />
+      <div className="absolute top-40 right-[15%] w-16 h-16 rounded-full bg-success/10 blur-2xl animate-[float_8s_ease-in-out_infinite_1s]" />
+      <div className="absolute bottom-20 left-[20%] w-24 h-24 rounded-full bg-warning/10 blur-2xl animate-[float_7s_ease-in-out_infinite_2s]" />
+
+      <div className="max-w-3xl mx-auto w-full relative">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0" />
@@ -335,16 +347,13 @@ function FeaturesSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {FEATURES.map(f => (
-            <div
-              key={f.title}
-              className="bg-surface border border-border rounded-xl p-5 hover:border-primary/40 hover:shadow-sm transition-all group cursor-default"
-            >
+            <SpotlightCard key={f.title} className="p-5 cursor-default group">
               <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
                 {f.icon}
               </div>
               <h3 className="font-semibold text-fg mb-1.5">{f.title}</h3>
               <p className="text-sm text-fg-muted leading-relaxed">{f.desc}</p>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

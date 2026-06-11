@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { PageTransition } from './PageTransition'
 import {
   LayoutDashboard, BarChart2, Users, Settings, CreditCard as BillingIcon,
   Bell, LogOut, UserCircle, Moon, Sun, CreditCard, Shield, LayoutTemplate, ChevronLeft, Zap,
@@ -153,7 +154,7 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
 
       {/* ── Sidebar ── */}
       <aside
-        className="flex flex-col bg-surface border-r border-border shrink-0 overflow-hidden transition-[width,min-width] duration-300 ease-in-out"
+        className="flex flex-col bg-surface/80 backdrop-blur-xl border-r border-white/10 dark:border-white/5 shrink-0 overflow-hidden transition-[width,min-width] duration-300 ease-in-out"
         style={{ width: w, minWidth: w }}
       >
         {/* Logo */}
@@ -308,7 +309,7 @@ export default function AppLayoutSider({ onSwitchLayout }: Props) {
 
         {/* Page content — only this scrolls */}
         <main className="flex-1 min-h-0 overflow-y-auto p-6 bg-canvas">
-          <Outlet />
+          <PageTransition><Outlet /></PageTransition>
           <footer className="mt-12 pt-5 border-t border-border-subtle">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
