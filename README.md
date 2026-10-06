@@ -59,18 +59,12 @@
 pnpm install
 ```
 
-### 2. Configure GitHub Packages (for `@dangbt/pro-ui`)
+### 2. Install `@dangbt/pro-ui`
 
-Create or edit `~/.npmrc`:
+`@dangbt/pro-ui` is published on [npmjs.org](https://www.npmjs.com/package/@dangbt/pro-ui) — no token or custom registry needed. It is installed with the rest of the dependencies:
 
-```
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
-@dangbt:registry=https://npm.pkg.github.com
-```
-
-Or if you prefer npm registry (public):
 ```bash
-npm install @dangbt/pro-ui
+pnpm add @dangbt/pro-ui@1.12.0
 ```
 
 ### 3. Start dev server
