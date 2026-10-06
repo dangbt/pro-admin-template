@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dangbt/pro-ui':
-        specifier: ^1.3.21
-        version: 1.3.21(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)
+        specifier: 1.12.0
+        version: 1.12.0(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.10.0(react-hook-form@7.76.1(react@18.3.1))
@@ -30,8 +30,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1
       react-aria-components:
-        specifier: ^1.4.0
-        version: 1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^1.21.0
+        version: 1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -165,16 +165,16 @@ packages:
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
 
-  '@dangbt/pro-ui@1.3.21':
-    resolution: {integrity: sha512-5tHSYU0HrK4WB+j8s9cFRNUdjfT33xP5pXGfT/g4BL+bK9A+pxcoSXFV9XIiy6IckESFMDXHT+6Jdw84SqV7CQ==}
+  '@dangbt/pro-ui@1.12.0':
+    resolution: {integrity: sha512-xfn/K80IomSi63ZDBnHCHaX+GAx/Qhadq4otA38vSZPjNZ8aF7mzYVOKJufZxSz0dDY4sFwKHCGZIFL3cTEeEQ==}
     peerDependencies:
       '@hookform/resolvers': '>=3'
       '@internationalized/date': '>=3'
-      '@tanstack/react-table': '>=8'
+      '@tanstack/react-table': ^8.21.0
       '@types/react': '>=18'
       lucide-react: '>=0.400.0'
       react: '>=18'
-      react-aria-components: '>=1'
+      react-aria-components: '>=1.21.0'
       react-dom: '>=18'
       react-hook-form: '>=7'
       tailwindcss: '>=4'
@@ -347,11 +347,14 @@ packages:
   '@internationalized/date@3.12.1':
     resolution: {integrity: sha512-6IedsVWXyq4P9Tj+TxuU8WGWM70hYLl12nbYU8jkikVpa6WXapFazPUcHUMDMoWftIDE2ILDkFFte6W2nFCkRQ==}
 
-  '@internationalized/number@3.6.6':
-    resolution: {integrity: sha512-iFgmQaXHE0vytNfpLZWOC2mEJCBRzcUxt53Xf/yCXG93lRvqas237i3r7X4RKMwO3txiyZD4mQjKAByFv6UGSQ==}
+  '@internationalized/date@3.12.4':
+    resolution: {integrity: sha512-M1dEn4c1U1HsSlaVR8upZtSqvXrTkHDfv18H01uCSJyjVLDxnBR38v/fMxecmlwXKR4i9HeZcmgQAPE6A+aGJQ==}
 
-  '@internationalized/string@3.2.8':
-    resolution: {integrity: sha512-NdbMQUSfXLYIQol5VyMtinm9pZDciiMfN7RtmSuSB78io1hqwJ0naYfxyW6vgxWBkzWymQa/3uLDlbfmshtCaA==}
+  '@internationalized/number@3.6.8':
+    resolution: {integrity: sha512-8UmMFia46DUt+k97zKd9fKWXcWHR+k8ae3eYzILETuT2KbIvLyOfac7zesw+sJdRAAZ7Q9pM1Mk22aXp2LD0Ig==}
+
+  '@internationalized/string@3.2.10':
+    resolution: {integrity: sha512-PDx6//vHSpRnHfxqMqto11zQvhsaU74O3mKv2F/0eicGZcl9NLjQmGlbHz/LsJh5tLKp4A4L7ZVTzN1/MmMTvA==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -369,8 +372,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@react-types/shared@3.34.0':
-    resolution: {integrity: sha512-gp6xo/s2lX54AlTjOiqwDnxA7UW79BNvI9dB9pr3LZTzRKCd1ZA+ZbgKw/ReIiWuvvVw/8QFJpnqeeFyLocMcQ==}
+  '@react-types/shared@3.36.1':
+    resolution: {integrity: sha512-AzsuD9OfxTOZMMvTRhlN3oHBwOmFN7tDh27LzqmHt4+uOgPhJT7ZM7/kVs/8/o0WxayMUIk3hBmCFRHv1FUoag==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
@@ -992,14 +995,14 @@ packages:
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
 
-  react-aria-components@1.17.0:
-    resolution: {integrity: sha512-0EyisMgvsFJ2aML3crDYv2tW5vT2Ryf8PGzY/g63JjDdCbLshlwazhS8JNtPF1vkTkungJJ6sVJbKyX+YKSoFA==}
+  react-aria-components@1.21.1:
+    resolution: {integrity: sha512-J88WflYY0z+EhLX0ce+GjFlQ3ag3ubIgfUTjpKSrBQBu92Xtl4Ub9o118HItUddtbk1Ido0jzyPy94/klZy1hg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  react-aria@3.48.0:
-    resolution: {integrity: sha512-jQjd4rBEIMqecBaAKYJbVGK6EqIHLa5znVQ7jwFyK5vCyljoj6KhgtiahmcIPsG5vG5vEDLw+ba+bEWn6A2P4w==}
+  react-aria@3.52.1:
+    resolution: {integrity: sha512-fdZZruC9/x/joCg0mhKGs5aHpwrXLCSZ4GOJmhhYyiE0ffyEsk9MLFt9LCOCF9tn8ErTD+UDQP4oDUSlZkmpCg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
@@ -1044,8 +1047,8 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  react-stately@3.46.0:
-    resolution: {integrity: sha512-OdxhWvHgs2L4OJGIs7hnuTr5WjjMM6enhNEAMRqiekhF8+ITvA2LRwNftOZwcogaoCslGYq5S2VQTQwnm0GbCA==}
+  react-stately@3.50.0:
+    resolution: {integrity: sha512-TnckvpDQGU0672wEaLZqdzvhuSeXWjgW6vijMWxiKOxc8CosQUfPGISdcZyfHqjX3XMjEtRxj4w9HumvX4h4mw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
@@ -1086,11 +1089,16 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  tailwind-merge@2.6.1:
-    resolution: {integrity: sha512-Oo6tHdpZsGpkKG88HJ8RR1rg/RdnEkQEfMoEk2x1XRI3F1AxeU+ijRXpiVUF4UbLfcxxRGw6TbUINKYdWVsQTQ==}
+  tailwind-merge@3.3.1:
+    resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
 
   tailwindcss-react-aria-components@2.1.0:
     resolution: {integrity: sha512-wP1BHdqFoFVKTVscM/EIhd1WEBUcNqmPgucMl+nzVAnruq7dzmn2J4CYcJ9cpf1WiyklzO8SH6M+Z6ZoF9X4Jg==}
+    peerDependencies:
+      tailwindcss: ^4.0.0
+
+  tailwindcss-react-aria-components@2.2.0:
+    resolution: {integrity: sha512-iNVDSQd6haXWiu4RakjaYnCUnLw/nOEFSFHEelFeIkT/0f8HSrJ23fwt59F93yNw4FrjjHDXIGHgEtqProNcmQ==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
@@ -1292,7 +1300,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@dangbt/pro-ui@1.3.21(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)':
+  '@dangbt/pro-ui@1.12.0(@hookform/resolvers@3.10.0(react-hook-form@7.76.1(react@18.3.1)))(@internationalized/date@3.12.1)(@tanstack/react-table@8.21.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(lucide-react@0.400.0(react@18.3.1))(react-aria-components@1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-hook-form@7.76.1(react@18.3.1))(react@18.3.1)(tailwindcss@4.3.0)(zod@3.25.76)':
     dependencies:
       '@hookform/resolvers': 3.10.0(react-hook-form@7.76.1(react@18.3.1))
       '@internationalized/date': 3.12.1
@@ -1300,12 +1308,12 @@ snapshots:
       clsx: 2.1.1
       lucide-react: 0.400.0(react@18.3.1)
       react: 18.3.1
-      react-aria-components: 1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-aria-components: 1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
       react-hook-form: 7.76.1(react@18.3.1)
-      tailwind-merge: 2.6.1
+      tailwind-merge: 3.3.1
       tailwindcss: 4.3.0
-      tailwindcss-react-aria-components: 2.1.0(tailwindcss@4.3.0)
+      tailwindcss-react-aria-components: 2.2.0(tailwindcss@4.3.0)
       zod: 3.25.76
     optionalDependencies:
       '@types/react': 18.3.29
@@ -1396,11 +1404,15 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.21
 
-  '@internationalized/number@3.6.6':
+  '@internationalized/date@3.12.4':
     dependencies:
       '@swc/helpers': 0.5.21
 
-  '@internationalized/string@3.2.8':
+  '@internationalized/number@3.6.8':
+    dependencies:
+      '@swc/helpers': 0.5.21
+
+  '@internationalized/string@3.2.10':
     dependencies:
       '@swc/helpers': 0.5.21
 
@@ -1423,7 +1435,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@react-types/shared@3.34.0(react@18.3.1)':
+  '@react-types/shared@3.36.1(react@18.3.1)':
     dependencies:
       react: 18.3.1
 
@@ -1904,29 +1916,30 @@ snapshots:
       object-assign: 4.1.1
       react-is: 16.13.1
 
-  react-aria-components@1.17.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-aria-components@1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@internationalized/date': 3.12.1
-      '@react-types/shared': 3.34.0(react@18.3.1)
+      '@internationalized/date': 3.12.4
+      '@internationalized/string': 3.2.10
+      '@react-types/shared': 3.36.1(react@18.3.1)
       '@swc/helpers': 0.5.21
       client-only: 0.0.1
       react: 18.3.1
-      react-aria: 3.48.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-aria: 3.52.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom: 18.3.1(react@18.3.1)
-      react-stately: 3.46.0(react@18.3.1)
+      react-stately: 3.50.0(react@18.3.1)
 
-  react-aria@3.48.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-aria@3.52.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@internationalized/date': 3.12.1
-      '@internationalized/number': 3.6.6
-      '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@18.3.1)
+      '@internationalized/date': 3.12.4
+      '@internationalized/number': 3.6.8
+      '@internationalized/string': 3.2.10
+      '@react-types/shared': 3.36.1(react@18.3.1)
       '@swc/helpers': 0.5.21
       aria-hidden: 1.2.6
       clsx: 2.1.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-stately: 3.46.0(react@18.3.1)
+      react-stately: 3.50.0(react@18.3.1)
       use-sync-external-store: 1.6.0(react@18.3.1)
 
   react-dom@18.3.1(react@18.3.1):
@@ -1965,12 +1978,12 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  react-stately@3.46.0(react@18.3.1):
+  react-stately@3.50.0(react@18.3.1):
     dependencies:
-      '@internationalized/date': 3.12.1
-      '@internationalized/number': 3.6.6
-      '@internationalized/string': 3.2.8
-      '@react-types/shared': 3.34.0(react@18.3.1)
+      '@internationalized/date': 3.12.4
+      '@internationalized/number': 3.6.8
+      '@internationalized/string': 3.2.10
+      '@react-types/shared': 3.36.1(react@18.3.1)
       '@swc/helpers': 0.5.21
       react: 18.3.1
       use-sync-external-store: 1.6.0(react@18.3.1)
@@ -2044,9 +2057,13 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  tailwind-merge@2.6.1: {}
+  tailwind-merge@3.3.1: {}
 
   tailwindcss-react-aria-components@2.1.0(tailwindcss@4.3.0):
+    dependencies:
+      tailwindcss: 4.3.0
+
+  tailwindcss-react-aria-components@2.2.0(tailwindcss@4.3.0):
     dependencies:
       tailwindcss: 4.3.0
 
